@@ -307,6 +307,35 @@ class UnsortedLinkedList:
             self.current = self.linked_list.head
             self.previous = None
 
+        def add_item(self, new_item):
+            """Adds an item to the list, between previous and current.
+
+            @author     Jeffrey Dowdle
+            @since      31 Aug 2013
+            @param      new_item: item to be added
+            @post       new_item will be added to the list, between previous
+                        and current. previous will point the newly added item.
+            @complexity Best/Worst: O(1)
+            """
+            new_node = Node(new_item, None)
+
+            if self.linked_list.is_empty():
+                self.linked_list.head = new_node
+                self.previous = new_node
+                self.current = None
+            else:
+                if self.previous is None:
+                    new_node.link = self.linked_list.head
+                    self.linked_list.head = new_node
+                    self.previous = new_node
+                elif self.current is None:
+                    self.previous.link = new_node
+                    self.previous = new_node
+                else:
+                    self.previous.link = new_node
+                    new_node.link = self.current
+                    self.previous = new_node
+
 
     def delete_item_via_iterator(self, delitem):
         """Same as delete_item() above, only this time using internal iterator
@@ -528,6 +557,7 @@ if __name__ == "__main__":
         test_delete_item()
         test_delete_item_via_iterator()
         test_find_linear()
+        test_add_item()
     except Exception as e:
         print("Error, unexpected exception: ", e)
         raise e
