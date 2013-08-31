@@ -547,6 +547,66 @@ def test_find_linear():
     print("Expected 40, got ", my_list.find_linear(40).item)
     print("Expected 50, got ", my_list.find_linear(50).item)
 
+def test_add_item():
+    """
+    Tests the add item function. Checks all four cases outlined in the prac
+    sheet.
+
+    complexity  Best/Worst: O(1)
+    """
+    print()
+    print("-- TESTING add_item() --")
+    print()
+
+    print("Trying with empty list")
+    test_list = UnsortedLinkedList(10)
+    it = iter(test_list)
+    it.add_item("Hello")
+    print("adding item: 'Hello'...")
+    print("Expected:", "'Hello'")
+    print("     Got:", test_list)
+    print()
+
+    print("Adding elements at various places...")
+    test_list = UnsortedLinkedList(10)
+    for i in range(10,0,-1):
+        test_list.add_first(i)
+    it = iter(test_list)
+    it.next()
+    it.next()
+    it.add_item("Hello")
+    it.next()
+    it.next()
+    it.add_item("Bye")
+    it.reset()
+    it.add_item("reset")
+    it.next()
+    it.add_item(1.5)
+    print(test_list)
+    print("Head: {0}, Previous: {1}, Current: {2}".format(test_list.head.item, it.previous.item, it.current.item))
+    print()
+
+    print("Trying to add at start of list...")
+    test_list = UnsortedLinkedList(10)
+    for i in range(10,0,-1):
+        test_list.add_first(i)
+    it = iter(test_list)
+    it.add_item("Hello")
+    print(test_list)
+    print("Head: {0}, Previous: {1}, Current: {2}".format(test_list.head.item, it.previous.item, it.current.item))
+    print()
+
+    print("Trying at end of list...")
+    test_list = UnsortedLinkedList(10)
+    for i in range(10,0,-1):
+        test_list.add_first(i)
+    it = iter(test_list)
+    for _ in range(10):
+        it.next()
+    it.add_item("Hello")
+    print(test_list)
+    print("Head: {0}, Previous: {1}, Current: {2}".format(test_list.head.item, it.previous.item, it.current))
+    print()
 
 if __name__ == "__main__":
     # Run the tests when the module is called from the command line
