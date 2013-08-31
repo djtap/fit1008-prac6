@@ -295,6 +295,18 @@ class UnsortedLinkedList:
             """
             return self.current is not None
 
+        def reset(self):
+            """Resets the iterator to point to the head of the list.
+
+            @author     Jeffrey Dowdle
+            @since      31 Aug 2013
+            @post       Iterator is changed, points to head of the list.
+                        previous will point to None.
+            @complexity Best/Worst: O(1)
+            """
+            self.current = self.linked_list.head
+            self.previous = None
+
 
     def delete_item_via_iterator(self, delitem):
         """Same as delete_item() above, only this time using internal iterator
