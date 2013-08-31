@@ -55,6 +55,8 @@ def main():
             write_to_file(list_it, command[1])
         elif command[0] == "read":
             read_from_file(list_it, command[1])
+        elif command[0] == "test":
+            run_tests()
         elif command[0] == "quit":
             quit = true
             insert(list_it, command[1])
@@ -95,6 +97,10 @@ def write_to_file(list_it, file_name):
     # you can send lines to the file
     #
     ##
+    
+    # loop through the list and output each line to the file. 
+    for item in list_it:
+        print(item, end='\n', file=file_name)
 
     f.close();
     print("Current buffer saved to file " + file_name)
