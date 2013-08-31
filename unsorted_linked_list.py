@@ -307,7 +307,7 @@ class UnsortedLinkedList:
             self.current = self.linked_list.head
             self.previous = None
 
-        def add_item(self, new_item):
+        def add_here(self, new_item):
             """Adds an item to the list, between previous and current.
 
             @author     Jeffrey Dowdle

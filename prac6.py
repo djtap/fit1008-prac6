@@ -57,7 +57,7 @@ def main():
             read_from_file(list_it, command[1])
         elif command[0] == "quit":
             quit = true
-                insert(list_it, command[1])
+            insert(list_it, command[1])
         else:
             print("Unrecognized command or not enough arguments.")
 
