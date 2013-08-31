@@ -547,21 +547,21 @@ def test_find_linear():
     print("Expected 40, got ", my_list.find_linear(40).item)
     print("Expected 50, got ", my_list.find_linear(50).item)
 
-def test_add_item():
+def test_add_here():
     """
-    Tests the add item function. Checks all four cases outlined in the prac
+    Tests the add here function. Checks all four cases outlined in the prac
     sheet.
 
     complexity  Best/Worst: O(1)
     """
     print()
-    print("-- TESTING add_item() --")
+    print("-- TESTING add_here() --")
     print()
 
     print("Trying with empty list")
     test_list = UnsortedLinkedList(10)
     it = iter(test_list)
-    it.add_item("Hello")
+    it.add_here("Hello")
     print("adding item: 'Hello'...")
     print("Expected:", "'Hello'")
     print("     Got:", test_list)
@@ -574,14 +574,14 @@ def test_add_item():
     it = iter(test_list)
     it.next()
     it.next()
-    it.add_item("Hello")
+    it.add_here("Hello")
     it.next()
     it.next()
-    it.add_item("Bye")
+    it.add_here("Bye")
     it.reset()
-    it.add_item("reset")
+    it.add_here("reset")
     it.next()
-    it.add_item(1.5)
+    it.add_here(1.5)
     print(test_list)
     print("Head: {0}, Previous: {1}, Current: {2}".format(test_list.head.item, it.previous.item, it.current.item))
     print()
@@ -591,7 +591,7 @@ def test_add_item():
     for i in range(10,0,-1):
         test_list.add_first(i)
     it = iter(test_list)
-    it.add_item("Hello")
+    it.add_here("Hello")
     print(test_list)
     print("Head: {0}, Previous: {1}, Current: {2}".format(test_list.head.item, it.previous.item, it.current.item))
     print()
@@ -603,7 +603,7 @@ def test_add_item():
     it = iter(test_list)
     for _ in range(10):
         it.next()
-    it.add_item("Hello")
+    it.add_here("Hello")
     print(test_list)
     print("Head: {0}, Previous: {1}, Current: {2}".format(test_list.head.item, it.previous.item, it.current))
     print()
@@ -617,7 +617,7 @@ if __name__ == "__main__":
         test_delete_item()
         test_delete_item_via_iterator()
         test_find_linear()
-        test_add_item()
+        test_add_here()
     except Exception as e:
         print("Error, unexpected exception: ", e)
         raise e
