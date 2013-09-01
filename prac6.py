@@ -99,9 +99,22 @@ def write_to_file(list_it, file_name):
     ##
     
     # loop through the list and output each line to the file. 
+    
+    # Test function doesn't work with this code...
+    # I think we have to use iterators???
+    """
     for item in list_it:
         print(item, end='\n', file=file_name)
-
+    """
+    try:
+        while True:
+            item = list_it.next()
+            print(item, end='\n', file=file_name)
+    
+    except StopIteration:
+        print("Iteration Done.")
+    # still doesn't work with test case...
+    
     f.close();
     print("Current buffer saved to file " + file_name)
 
