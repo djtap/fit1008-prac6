@@ -20,8 +20,10 @@ def main():
     """
     A simple command-line driven text editor.
 
-    @modified Javier Candeira
-
+    @modified   Javier Candeira
+    @modified   Jerry Lu
+    @since      2 September 2013
+    
     @input      the commands to execute.
     @pre        none
     @post       see postconditions for individual methods in this class.
@@ -58,8 +60,7 @@ def main():
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
-            quit = true
-            insert(list_it, command[1])
+            quit = True
         else:
             print("Unrecognized command or not enough arguments.")
 
@@ -67,7 +68,11 @@ def main():
 def write_to_file(list_it, file_name):
     """
     Stores each line of an UnsortedLinkedList into a file.
-
+    
+    @modified
+                Jerry Lu
+    @since 
+                1 September 2013
     @param list_it
                used to iterate over our linked list
     @param file_name
@@ -101,7 +106,6 @@ def write_to_file(list_it, file_name):
     # loop through the list and output each line to the file. 
     
     # Test function doesn't work with this code...
-    # I think we have to use iterators???
     """
     for item in list_it:
         print(item, end='\n', file=file_name)
@@ -231,22 +235,6 @@ def test_write_to_file():
                                 + "' is not equal to '" + r + "'.");
     print("write_to_file() works fine!")
     return
-
-    # OLD longer Java version
-    test_write_listIt.reset()
-    test_write_listIt2.reset()
-    while test_write_listIt.has_next():
-        try:
-            s = test_write_listIt.next()
-            r = test_write_listIt2.next()
-            if not s == r:
-                raise Exception(
-                        "writeToFile() doesn't work!, because '" + s
-                                + "' is not equal to '" + r + "'.");
-        except Exception as e:
-            e.printStackTrace();
-            break;
-    print("writeToFile() works fine!")
 
 if __name__ == "__main__":
     main()
