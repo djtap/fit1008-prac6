@@ -247,7 +247,7 @@ class UnsortedLinkedList:
                         node will be pointed at the next element
             @complexity best and worst case: O(1)
             """
-            if not self.has_next:                   # we reached the end
+            if not self.has_next():                   # we reached the end
                 raise StopIteration("no more elements in list")
             else:
                 item = self.current.item
