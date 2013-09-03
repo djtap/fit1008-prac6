@@ -6,9 +6,9 @@ Solution to a prac to give students experience using linked lists to implement a
 
 @author
 @since
-@error_handling     
-@error_handling     
-@known_bugs         
+@error_handling
+@error_handling
+@known_bugs
 """
 
 import os
@@ -23,17 +23,17 @@ def main():
     @modified   Javier Candeira
     @modified   Jerry Lu
     @since      2 September 2013
-    
+
     @input      the commands to execute.
     @pre        none
     @post       see postconditions for individual methods in this class.
-    @complexity have a look at the menu_q1 in the reverse_polish_notation.py 
+    @complexity have a look at the menu_q1 in the reverse_polish_notation.py
                 that you used last week and add the complexity for this one.
 
-    Please note that the complexities may change as you add 
-    functionality to this class -- don't forget to update this comment 
+    Please note that the complexities may change as you add
+    functionality to this class -- don't forget to update this comment
     as you go.
-                
+
     """
 
     my_list = UnsortedLinkedList()
@@ -70,21 +70,17 @@ def main():
 def write_to_file(list_it, file_name):
     """
     Stores each line of an UnsortedLinkedList into a file.
-    
-    @modified
-                Jerry Lu
-    @since 
-                1 September 2013
-    @param list_it
-               used to iterate over our linked list
-    @param file_name
-               is the name to be given the output file.
-    @pre file_name is a valid file name.
-    @post every string in every node of the list is written into a new file
-          created with name file_name, in the same order as it appears in the
-          list. The list itself is not altered.
+
+    @modified   Jerry Lu
+    @since      1 September 2013
+    @param      list_it: used to iterate over our linked list
+    @param      file_name: is the name to be given the output file.
+    @pre        file_name is a valid file name.
+    @postevery  string in every node of the list is written into a new file
+                created with name file_name, in the same order as it appears
+                in the list. The list itself is not altered.
     @complexity O(1) currently, because the function so far does nothing,
-                but this should change. So update this comment when you 
+                but this should change. So update this comment when you
                 modify this method!
     """
 
@@ -96,31 +92,12 @@ def write_to_file(list_it, file_name):
         print("Error opening file:" + file_name + ".  File not saved.")
         return
 
-    ##
-    #
-    # This is where you put your file writing code
-    #
-    # Read the documentation for print() to see how 
-    # you can send lines to the file
-    #
-    ##
-    
-    # loop through the list and output each line to the file. 
-    
-    # Test function doesn't work with this code...
-    """
+    # loop through the list and output each line to the file.
+    list_it.reset()
+
     for item in list_it:
-        print(item, end='\n', file=file_name)
-    """
-    try:
-        while True:
-            item = list_it.next()
-            print(item, end='\n', file=file_name)
-    
-    except StopIteration:
-        print("Iteration Done.")
-    # still doesn't work with test case...
-    
+        print(item, end='\n', file=f)
+
     f.close();
     print("Current buffer saved to file " + file_name)
 
@@ -162,14 +139,14 @@ def read_from_file(list_it, file_name):
 
 def printall(list_it):
     # display all lines in the list to the screen
-    
+
     try:
         while True:
             item = list_it.next()
             print(item)
     except StopIteration:
         print("Print Iteration Done.")
-    
+
     """
     for item in list_it:
         print(item)
@@ -239,12 +216,14 @@ def test_write_to_file():
 
     # then we write it into a file, and read it back into a linked list
     print("Testing writeToFile()...")
-    write_to_file(test_write_list_it, "prac6_write_test");
+    write_to_file(test_write_list_it, "prac6_write_test.txt");
     test_write_list2 = UnsortedLinkedList()
     test_write_list_it2 = iter(test_write_list2)
-    read_from_file(test_write_list_it2, "prac6_write_test");
+    read_from_file(test_write_list_it2, "prac6_write_test.txt");
 
-    for tup in zip(test_write_list_it.reset(), test_write_list_it2.reset()):
+    test_write_list_it.reset()
+    test_write_list_it2.reset()
+    for tup in zip(test_write_list_it, test_write_list_it2):
         s, r = tup
         if s != r:
             raise Exception("writeToFile() doesn't work!, because '" + s
