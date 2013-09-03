@@ -140,17 +140,16 @@ def read_from_file(list_it, file_name):
 def printall(list_it):
     # display all lines in the list to the screen
 
-    try:
-        while True:
-            item = list_it.next()
-            print(item)
-    except StopIteration:
-        print("Print Iteration Done.")
+    # try:
+    #     while True:
+    #         item = list_it.next()
+    #         print(item)
+    # except StopIteration:
+    #     print("Print Iteration Done.")
+    list_it.reset()
 
-    """
     for item in list_it:
         print(item)
-    """
 
 # Let's write tests too
 
