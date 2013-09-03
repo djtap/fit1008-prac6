@@ -59,6 +59,11 @@ def main():
             read_from_file(list_it, command[1])
         elif command[0] == "printall":
             printall(list_it)
+        elif command[0] == "print":
+            try:
+                print_n(my_list, list_it, int(command[1]))
+            except Exception as e:
+                print("Exception:", e)
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
@@ -151,8 +156,34 @@ def printall(list_it):
     for item in list_it:
         print(item)
 
-# Let's write tests too
+def print_n(my_list, list_it, n):
+    list_it.reset()
 
+    # Find the length of the list
+    length = 0
+    for _ in list_it:
+        length += 1
+
+    # Check whether n is a valid line number
+    if n > length or n < 1:
+        raise Exception("Line number out of range.")
+
+    # Reset iterator
+    list_it.reset()
+    counter = 1
+    current = None
+
+    # call next() n times
+    while counter <= n:
+        current = list_it.next()
+        counter += 1
+
+    # print the line
+    print(current)
+
+
+
+# Let's write tests too
 def run_tests():
     """
     Testrunner for the questions in Prac6
