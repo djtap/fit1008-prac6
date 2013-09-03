@@ -57,6 +57,8 @@ def main():
             write_to_file(list_it, command[1])
         elif command[0] == "read":
             read_from_file(list_it, command[1])
+        elif command[0] == "printall":
+            printall(list_it)
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
@@ -158,6 +160,20 @@ def read_from_file(list_it, file_name):
         else:
             raise e
 
+def printall(list_it):
+    # display all lines in the list to the screen
+    
+    try:
+        while True:
+            item = list_it.next()
+            print(item)
+    except StopIteration:
+        print("Print Iteration Done.")
+    
+    """
+    for item in list_it:
+        print(item)
+    """
 
 # Let's write tests too
 
