@@ -192,7 +192,7 @@ def print_n(list_it, n):
 	
 	@author		Jeffrey Dowdle
 	@since 		3 September 2013
-	@param		n: the nth number to be printed
+	@param		n: the nth line to be printed
 	@pre		n must be an integer greater than 0
 	@post		List is unchanged
 	@complexity	Best: O(1), if first line is the one we want to print.
@@ -214,6 +214,18 @@ def print_n(list_it, n):
     print(list_it.next())
 
 def delete_n(list_it, n):
+	"""
+	Deletes the Nth line in the list, where the first line is numbered 1.
+	
+	@author		Jeffrey Dowdle
+	@since 		4 September 2013
+	@param		n: the nth line to be deleted
+	@pre		n must be an integer greater than 0
+	@post		List length is reduced by 1 if delete is successful
+	@complexity	Best: O(1), if first line is the one we want to delete.
+				Worst: O(n), if the line we want to delete is at the
+				around the end of the list.
+	"""
     if not validate_line_number(list_it, n):
         raise Exception("Line number out of range.")
 
