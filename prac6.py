@@ -251,14 +251,6 @@ def validate_line_number(list_it, n):
     # Check whether n is a valid line number
     return n <= length and n >= 1
 
-def length(list):
-	list.reset()
-    # Find the length of the list
-    length = 0
-    for _ in list:
-        length += 1	
-    return length
-
 def append(list_it, append_data):
 	"""
 	Inserts some lines of text at the end of the list.
