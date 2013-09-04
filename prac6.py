@@ -61,7 +61,12 @@ def main():
             printall(list_it)
         elif command[0] == "print":
             try:
-                print_n(my_list, list_it, int(command[1]))
+                print_n(list_it, int(command[1]))
+            except Exception as e:
+                print("Exception:", e)
+        elif command[0] == "delete":
+            try:
+                delete_n(list_it, int(command[1]))
             except Exception as e:
                 print("Exception:", e)
         elif command[0] == "test":
@@ -156,7 +161,62 @@ def printall(list_it):
     for item in list_it:
         print(item)
 
-def print_n(my_list, list_it, n):
+# def print_n(my_list, list_it, n):
+#     list_it.reset()
+
+#     # Find the length of the list
+#     length = 0
+#     for _ in list_it:
+#         length += 1
+
+#     # Check whether n is a valid line number
+#     if n > length or n < 1:
+#         raise Exception("Line number out of range.")
+
+#     # Reset iterator
+#     list_it.reset()
+#     counter = 1
+#     current = None
+
+#     # call next() n times
+#     while counter <= n:
+#         current = list_it.next()
+#         counter += 1
+
+#     # print the line
+#     print(current)
+
+def print_n(list_it, n):
+    if not validate_line_number(list_it, n):
+        raise Exception("Line number out of range.")
+
+    # Reset iterator
+    list_it.reset()
+    counter = 1
+
+    # call next() n times
+    while counter < n:
+        list_it.next()
+        counter += 1
+
+    print(list_it.next())
+
+def delete_n(list_it, n):
+    if not validate_line_number(list_it, n):
+        raise Exception("Line number out of range.")
+
+    # Reset iterator
+    list_it.reset()
+    counter = 1
+
+    # call next() n times
+    while counter < n:
+        list_it.next()
+        counter += 1
+
+    print("Deleted line {0}: {1}".format(n, list_it.delete()))
+
+def validate_line_number(list_it, n):
     list_it.reset()
 
     # Find the length of the list
@@ -165,23 +225,7 @@ def print_n(my_list, list_it, n):
         length += 1
 
     # Check whether n is a valid line number
-    if n > length or n < 1:
-        raise Exception("Line number out of range.")
-
-    # Reset iterator
-    list_it.reset()
-    counter = 1
-    current = None
-
-    # call next() n times
-    while counter <= n:
-        current = list_it.next()
-        counter += 1
-
-    # print the line
-    print(current)
-
-
+    return n <= length and n >= 1
 
 # Let's write tests too
 def run_tests():
