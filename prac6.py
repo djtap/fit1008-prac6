@@ -187,6 +187,18 @@ def printall(list_it):
 #     print(current)
 
 def print_n(list_it, n):
+	"""
+	Prints the Nth line in the list, where the first line is numbered 1.
+	
+	@author		Jeffrey Dowdle
+	@since 		3 September 2013
+	@param		n: the nth number to be printed
+	@pre		n must be an integer greater than 0
+	@post		List is unchanged
+	@complexity	Best: O(1), if first line is the one we want to print.
+				Worst: O(n), if the line we want to print is at the
+				around the end of the list.
+	"""
     if not validate_line_number(list_it, n):
         raise Exception("Line number out of range.")
 
