@@ -241,6 +241,14 @@ def delete_n(list_it, n):
     print("Deleted line {0}: {1}".format(n, list_it.delete()))
 
 def validate_line_number(list_it, n):
+	"""
+	Checks if n is a valid line number
+	
+	@author		Jeffrey Dowdle
+	@since 		4 September 2013
+	@pre 		n needs to be an integer
+	@complexity	Best and worst: O(n), where n is the length of list_it
+	"""
     list_it.reset()
 
     # Find the length of the list
