@@ -320,7 +320,14 @@ def insert(list_it, insert_data, n):
     Inserts text at the nth line in the list
 
     @since      5 September 2013
-
+    @author     Jerry Lu
+    @modified   Jeffrey Dowdle
+    @pre        insert_data needs to be a valid list
+    @post       list_it gets all text from insert_data inserted
+    @complexity Best case: O(m), m being the length of the insert_data
+                list, where list is inserted at the start
+                Worst case: O(n + m), where n is close to the end of
+                list it. m is defined in best case.
     """
     # Reset iterators
     list_it.reset()
