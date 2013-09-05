@@ -270,9 +270,7 @@ def validate_line_number(list_it, n):
     list_it.reset()
 
     # Find the length of the list
-    length = 0
-    for _ in list_it:
-        length += 1
+    length = get_length_of_list(list_it)
 
     # Check whether n is a valid line number
     return n <= length and n >= 1
