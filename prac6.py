@@ -319,6 +319,14 @@ def insert(list_it, insert_data, n):
         list_it.add_here(lines)
 
 def get_length_of_list(list_it):
+    """
+    Get the length of the list.
+    
+    @since      5 September 2013
+    @author     Jeffrey Dowdle
+    @pre        list_it needs to be a valid list
+    @complexity Best and worst: O(n), where n is the size of the list.
+    """
     list_it.reset()
 
     # Find the length of the list
