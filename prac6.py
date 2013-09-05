@@ -108,6 +108,14 @@ def main():
 def multi_line_input():
     """
     Allows user to input several lines, ends input when it hits "."
+    
+    @since      5 September 2013
+    @author     Jerry Lu
+    @pre        None
+    @post       User needs to enter ".", so that it can save the string.
+    @return     buffer: a list of strings
+    @complexity Best and worst: O(n), where n is the number of lines
+                entered by user.
     """
     print("Enter a . by itself to save.")
     buffer = []
