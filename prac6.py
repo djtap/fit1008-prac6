@@ -77,23 +77,27 @@ def main():
         elif command[0] == "insert":
             # check if n is negative
             try:
-                int(command[1])
+                n = int(command[1])
+
+                if not validate_line_number(list_it, n) and n != 0:
+                    raise Exception("Line number out of range.")
+
+            # if int(command[1]) < 0:
+            #     raise ValueError("Line number cannot be negative")
+
+            # n = int(command[1])
+
+            # taken from delete_n
+            # if not validate_line_number(list_it, n) and n != 0:
+            #     raise Exception("Line number out of range.")
+
+                print("Insert: ")
+                insert_data = multi_line_input()
+                insert(list_it, insert_data, n)
             except ValueError:
                 print("Line number needs to be an integer.")
-                break
-            
-            if int(command[1]) < 0:
-                raise ValueError("Line number cannot be negative")
-            
-            n = int(command[1])
-            
-            # taken from delete_n
-            if not validate_line_number(list_it, n):
-                raise Exception("Line number out of range.")
-            
-            print("Insert: ")
-            insert_data = multi_line_input()
-            insert(list_it, insert_data, command[1])
+            except Exception as e:
+                print("Exception:", e)
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
@@ -112,7 +116,7 @@ def multi_line_input():
         if line == ".":
             break
         buffer.append(line)
-    
+
     return buffer
 
 def write_to_file(list_it, file_name):
@@ -282,7 +286,7 @@ def append(list_it, append_data):
     """
     # Reset iterators
     list_it.reset()
-    
+
     ### append_data is a list.
 
     # Get to the last element in the list
@@ -296,19 +300,21 @@ def append(list_it, append_data):
 def insert(list_it, insert_data, n):
     """
     Inserts text at the nth line in the list
-    
+
     @since      5 September 2013
-    
+
     """
+
+
     # Reset iterators
     list_it.reset()
-    
-    n = int(n)
-    
+
+    # n = int(n)
+
     # Get to the nth line in the list
     for _ in range(n):
         list_it.next()
-    
+
     # Add elements
     for lines in insert_data:
         list_it.add_here(lines)
