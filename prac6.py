@@ -22,6 +22,7 @@ def main():
 
     @modified   Javier Candeira
     @modified   Jerry Lu
+    @modified   Jeffrey Dowdle
     @since      2 September 2013
 
     @input      the commands to execute.
@@ -201,6 +202,7 @@ def printall(list_it):
     """Prints the entire buffer to the screen.
 
     @author     Jerry Lu
+    @modified   Jeffrey Dowdle
     @since      1 September 2013
     @param      list_it: iterator to traverse buffer
     @post       list_it will be at end of list.
@@ -286,9 +288,16 @@ def validate_line_number(list_it, n):
 def append(list_it, append_data):
     """
     Inserts some lines of text at the end of the list.
-
+    
+    @author     Jerry Lu
+                Jeffrey Dowdle
     @since      4 September 2013
     @pre        append_data is a list of strings.
+    @post       list_it contains append_data at the end
+    @complexity Best and worst: O(n + m), where n is the number of lines
+                in append_data, m is the number of elements already in
+                list_it
+                // Check.
     """
     # Reset iterators
     # list_it.reset()
