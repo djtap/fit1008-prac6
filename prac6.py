@@ -73,6 +73,7 @@ def main():
             print("Append: ")
             append_data = multi_line_input()
             print(append_data)
+            append(list_it, append_data)
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
@@ -256,30 +257,21 @@ def append(list_it, append_data):
     """
     Inserts some lines of text at the end of the list.
 
-    Full stop on a line by itself appends the block of text
-
-    Not yet tested...
-    Validation to be implemented...
-
     @since      4 September 2013
+    @pre        append_data is a list of strings.
     """
     # Reset iterators
     list_it.reset()
-    append_data.reset()
-    # Assume append_data is the same structure as list_it,
-    # since it can hold several lines.
+    
+    ### append_data is a list.
 
-    # Get to the last element in the list?
+    # Get to the last element in the list
     for _ in list_it:
         list_it.next()
 
-    # Add elements at the end till we hit the full stop
-    while True:
-        if append_data.next() == ".":
-            break
-        list_it.add_here(append_data.next())
-
-
+    # Add elements at the end
+    for lines in append_data:
+        list_it.add_here(lines)
 
 # Let's write tests too
 def run_tests():
