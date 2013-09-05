@@ -148,48 +148,24 @@ def read_from_file(list_it, file_name):
             raise e
 
 def printall(list_it):
-    # display all lines in the list to the screen
+    """Prints the entire buffer to the screen.
 
-    # try:
-    #     while True:
-    #         item = list_it.next()
-    #         print(item)
-    # except StopIteration:
-    #     print("Print Iteration Done.")
+    @author     Jerry Lu
+    @since      1 September 2013
+    @param      list_it: iterator to traverse buffer
+    @post       list_it will be at end of list.
+    @complexity Best/Worst: O(N), where N is the size of the list.
+    """
     list_it.reset()
 
     for item in list_it:
         print(item)
 
-# def print_n(my_list, list_it, n):
-#     list_it.reset()
-
-#     # Find the length of the list
-#     length = 0
-#     for _ in list_it:
-#         length += 1
-
-#     # Check whether n is a valid line number
-#     if n > length or n < 1:
-#         raise Exception("Line number out of range.")
-
-#     # Reset iterator
-#     list_it.reset()
-#     counter = 1
-#     current = None
-
-#     # call next() n times
-#     while counter <= n:
-#         current = list_it.next()
-#         counter += 1
-
-#     # print the line
-#     print(current)
 
 def print_n(list_it, n):
 	"""
 	Prints the Nth line in the list, where the first line is numbered 1.
-	
+
 	@author		Jeffrey Dowdle
 	@since 		3 September 2013
 	@param		n: the nth line to be printed
@@ -216,7 +192,7 @@ def print_n(list_it, n):
 def delete_n(list_it, n):
 	"""
 	Deletes the Nth line in the list, where the first line is numbered 1.
-	
+
 	@author		Jeffrey Dowdle
 	@since 		4 September 2013
 	@param		n: the nth line to be deleted
@@ -241,9 +217,9 @@ def delete_n(list_it, n):
     print("Deleted line {0}: {1}".format(n, list_it.delete()))
 
 def validate_line_number(list_it, n):
-	"""
+    """
 	Checks if n is a valid line number
-	
+
 	@author		Jeffrey Dowdle
 	@since 		4 September 2013
 	@pre 		n needs to be an integer
@@ -262,12 +238,12 @@ def validate_line_number(list_it, n):
 def append(list_it, append_data):
 	"""
 	Inserts some lines of text at the end of the list.
-	
+
 	Full stop on a line by itself appends the block of text
-	
+
 	Not yet tested...
 	Validation to be implemented...
-	
+
 	@since 		4 September 2013
 	"""
 	# Reset iterators
@@ -275,18 +251,18 @@ def append(list_it, append_data):
     append_data.reset()
     # Assume append_data is the same structure as list_it,
     # since it can hold several lines.
-    
+
     # Get to the last element in the list?
     for _ in list_it:
         list_it.next()
-        
+
     # Add elements at the end till we hit the full stop
     while True:
 		if append_data.next() == ".":
 			break
 		list_it.add_here(append_data.next())
-    
-	
+
+
 
 # Let's write tests too
 def run_tests():
