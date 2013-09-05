@@ -99,6 +99,7 @@ def multi_line_input():
 
     return buffer
 
+
 def write_to_file(list_it, file_name):
     """
     Stores each line of an UnsortedLinkedList into a file.
