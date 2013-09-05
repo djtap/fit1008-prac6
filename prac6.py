@@ -45,7 +45,7 @@ def main():
     while not quit:
         # Read a command
         try:
-            print("Possible commands: 'printall' 'pwd' 'test' 'quit' 'write $filename' 'read $filename' delete $line' 'insert $line' 'print $line'")
+            print("Possible commands: 'append' 'insert $line' 'printall' 'pwd' 'test' 'quit' 'write $filename' 'read $filename' delete $line' 'insert $line' 'print $line'")
             input_line = input("Enter your command: ")
         except IOError as e:
             print("Error reading from console or EOF character")
@@ -74,6 +74,10 @@ def main():
             append_data = multi_line_input()
             print(append_data)
             append(list_it, append_data)
+        elif command[0] == "insert":
+            print("Insert: ")
+            insert_data = multi_line_input()
+            insert(list_it, insert_data, command[1])
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
@@ -272,6 +276,27 @@ def append(list_it, append_data):
     # Add elements at the end
     for lines in append_data:
         list_it.add_here(lines)
+
+def insert(list_it, insert_data, n):
+    """
+    Inserts text at the nth line in the list
+    
+    @since      5 September 2013
+    """
+    n = int(n)
+    
+    # check if n is negative
+    if n < 0:
+        return "Error, line number cannot be negative"
+    
+    # Get to the nth line in the list
+    for _ in range(n):
+        list_it.next()
+    
+    # Add elements
+    for lines in insert_data:
+        list_it.add_here(lines)
+
 
 # Let's write tests too
 def run_tests():
