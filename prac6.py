@@ -75,6 +75,22 @@ def main():
             print(append_data)
             append(list_it, append_data)
         elif command[0] == "insert":
+            # check if n is negative
+            try:
+                int(command[1])
+            except ValueError:
+                print("Line number needs to be an integer.")
+                break
+            
+            if int(command[1]) < 0:
+                raise ValueError("Line number cannot be negative")
+            
+            n = int(command[1])
+            
+            # taken from delete_n
+            if not validate_line_number(list_it, n):
+                raise Exception("Line number out of range.")
+            
             print("Insert: ")
             insert_data = multi_line_input()
             insert(list_it, insert_data, command[1])
@@ -282,12 +298,12 @@ def insert(list_it, insert_data, n):
     Inserts text at the nth line in the list
     
     @since      5 September 2013
-    """
-    n = int(n)
     
-    # check if n is negative
-    if n < 0:
-        return "Error, line number cannot be negative"
+    """
+    # Reset iterators
+    list_it.reset()
+    
+    n = int(n)
     
     # Get to the nth line in the list
     for _ in range(n):
