@@ -75,6 +75,16 @@ def main():
             print(append_data)
             append(list_it, append_data)
         elif command[0] == "insert":
+            # check if n is negative
+            try:
+                int(command[1])
+            except ValueError:
+                print("Line number needs to be an integer.")
+                break
+            
+            if int(command[1]) < 0:
+                raise ValueError("Line number cannot be negative")
+            
             print("Insert: ")
             insert_data = multi_line_input()
             insert(list_it, insert_data, command[1])
@@ -285,9 +295,11 @@ def insert(list_it, insert_data, n):
     """
     n = int(n)
     
+    """
     # check if n is negative
     if n < 0:
-        return "Error, line number cannot be negative"
+        raise ValueError("Error, line number cannot be negative")
+    """
     
     # Get to the nth line in the list
     for _ in range(n):
