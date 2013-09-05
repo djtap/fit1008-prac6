@@ -285,17 +285,20 @@ def append(list_it, append_data):
     @pre        append_data is a list of strings.
     """
     # Reset iterators
+    # list_it.reset()
+
+    # ### append_data is a list.
+
+    # # Get to the last element in the list
+    # for _ in list_it:
+    #     list_it.next()
+
+    # # Add elements at the end
+    # for lines in append_data:
+    #     list_it.add_here(lines)
     list_it.reset()
-
-    ### append_data is a list.
-
-    # Get to the last element in the list
-    for _ in list_it:
-        list_it.next()
-
-    # Add elements at the end
-    for lines in append_data:
-        list_it.add_here(lines)
+    n = get_length_of_list(list_it)
+    insert(list_it, append_data, n)
 
 def insert(list_it, insert_data, n):
     """
@@ -304,8 +307,6 @@ def insert(list_it, insert_data, n):
     @since      5 September 2013
 
     """
-
-
     # Reset iterators
     list_it.reset()
 
@@ -318,6 +319,16 @@ def insert(list_it, insert_data, n):
     # Add elements
     for lines in insert_data:
         list_it.add_here(lines)
+
+def get_length_of_list(list_it):
+    list_it.reset()
+
+    # Find the length of the list
+    length = 0
+    for _ in list_it:
+        length += 1
+
+    return length
 
 
 # Let's write tests too
