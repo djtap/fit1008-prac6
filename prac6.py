@@ -96,7 +96,7 @@ def multi_line_input():
         if line == ".":
             break
         buffer.append(line)
-
+    
     return buffer
 
 def write_to_file(list_it, file_name):
@@ -266,7 +266,7 @@ def append(list_it, append_data):
     """
     # Reset iterators
     list_it.reset()
-
+    
     ### append_data is a list.
 
     # Get to the last element in the list
@@ -280,19 +280,19 @@ def append(list_it, append_data):
 def insert(list_it, insert_data, n):
     """
     Inserts text at the nth line in the list
-
+    
     @since      5 September 2013
     """
     n = int(n)
-
+    
     # check if n is negative
     if n < 0:
         return "Error, line number cannot be negative"
-
+    
     # Get to the nth line in the list
     for _ in range(n):
         list_it.next()
-
+    
     # Add elements
     for lines in insert_data:
         list_it.add_here(lines)
