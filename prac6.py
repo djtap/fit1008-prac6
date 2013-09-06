@@ -132,9 +132,8 @@ def write_to_file(list_it, file_name):
     @postevery  string in every node of the list is written into a new file
                 created with name file_name, in the same order as it appears
                 in the list. The list itself is not altered.
-    @complexity O(1) currently, because the function so far does nothing,
-                but this should change. So update this comment when you
-                modify this method!
+    @complexity Best: O(1), if the file can't be opened.
+                Worst: O(n), where n is the number of lines in the file.
     """
 
     # Create a filehandle to do the output.

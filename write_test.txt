@@ -1,0 +1,7 @@
+This is a test file to test the write to file function.
+The file that this text will be written to should be called write_test.txt.
+
+-- Test -- Write -- 
+Hello???
+123
+$%&&$#%$^%^&^*%$^$^$#%#%$
