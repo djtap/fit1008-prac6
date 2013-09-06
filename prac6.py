@@ -73,7 +73,7 @@ def main():
         elif command[0] == "append":
             print("Append: ")
             append_data = multi_line_input()
-            print(append_data)
+            # print(append_data)
             append(list_it, append_data)
         elif command[0] == "insert":
             # check if n is negative
@@ -300,19 +300,11 @@ def append(list_it, append_data):
                 // Check.
     """
     # Reset iterators
-    # list_it.reset()
-
-    # ### append_data is a list.
-
-    # # Get to the last element in the list
-    # for _ in list_it:
-    #     list_it.next()
-
-    # # Add elements at the end
-    # for lines in append_data:
-    #     list_it.add_here(lines)
     list_it.reset()
+
     n = get_length_of_list(list_it)
+
+    # Append is a special case of insert where n is length of list_it
     insert(list_it, append_data, n)
 
 def insert(list_it, insert_data, n):
