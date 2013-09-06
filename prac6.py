@@ -4,11 +4,12 @@
 """
 Solution to a prac to give students experience using linked lists to implement a simple text editor.
 
-@author
-@since
+@author             Jeffrey Dowdle
+@author             Jerry Lu
+@since              2 September 2013
+@error_handling 
 @error_handling
-@error_handling
-@known_bugs
+@known_bugs         None
 """
 
 import os
@@ -82,15 +83,6 @@ def main():
 
                 if not validate_line_number(list_it, n) and n != 0:
                     raise Exception("Line number out of range.")
-
-            # if int(command[1]) < 0:
-            #     raise ValueError("Line number cannot be negative")
-
-            # n = int(command[1])
-
-            # taken from delete_n
-            # if not validate_line_number(list_it, n) and n != 0:
-            #     raise Exception("Line number out of range.")
 
                 print("Insert: ")
                 insert_data = multi_line_input()
