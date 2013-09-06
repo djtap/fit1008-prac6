@@ -349,6 +349,16 @@ def get_length_of_list(list_it):
     return length
 
 def filter_word(list_it, word):
+    """
+    Advanced question.
+    Deletes the line in list_it if it contain the word.
+
+    @author     Jeffrey Dowdle
+    @since      6 September 2013
+    @pre        word: is a string
+    @post       lines containing word is deleted.
+    @complexity O(n), where n is the length of the list
+    """
     list_it.reset()
 
     while list_it.has_next():
