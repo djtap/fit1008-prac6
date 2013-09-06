@@ -66,11 +66,15 @@ def main():
         elif command[0] == "print":
             try:
                 print_n(list_it, int(command[1]))
+            except ValueError as e:
+                print("Line number needs to be an integer.")
             except Exception as e:
                 print("Exception:", e)
         elif command[0] == "delete":
             try:
                 delete_n(list_it, int(command[1]))
+            except ValueError as e:
+                print("Line number needs to be an integer.")
             except Exception as e:
                 print("Exception:", e)
         elif command[0] == "append":
