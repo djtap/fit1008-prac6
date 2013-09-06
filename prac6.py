@@ -7,7 +7,7 @@ Solution to a prac to give students experience using linked lists to implement a
 @author             Jeffrey Dowdle
 @author             Jerry Lu
 @since              2 September 2013
-@error_handling 
+@error_handling
 @error_handling
 @known_bugs         None
 """
@@ -47,7 +47,7 @@ def main():
     while not quit:
         # Read a command
         try:
-            print("Possible commands: 'append' 'insert $line' 'printall' 'pwd' 'test' 'quit' 'write $filename' 'read $filename' delete $line' 'insert $line' 'print $line'")
+            print("Possible commands: 'printall' 'pwd' 'test' 'quit' 'write $filename' 'read $filename' 'delete $line' 'append' 'insert $line' 'print $line'")
             input_line = input("Enter your command: ")
         except IOError as e:
             print("Error reading from console or EOF character")
@@ -101,7 +101,7 @@ def main():
 def multi_line_input():
     """
     Allows user to input several lines, ends input when it hits "."
-    
+
     @since      5 September 2013
     @author     Jerry Lu
     @pre        None
@@ -279,7 +279,7 @@ def validate_line_number(list_it, n):
 def append(list_it, append_data):
     """
     Inserts some lines of text at the end of the list.
-    
+
     @author     Jerry Lu
                 Jeffrey Dowdle
     @since      4 September 2013
@@ -328,7 +328,7 @@ def insert(list_it, insert_data, n):
 def get_length_of_list(list_it):
     """
     Get the length of the list.
-    
+
     @since      5 September 2013
     @author     Jeffrey Dowdle
     @pre        list_it needs to be a valid list
@@ -355,8 +355,150 @@ def run_tests():
     try:
         test_read_from_file()
         test_write_to_file()
+        test_printall()
+        test_print_n()
+        test_insert()
+        test_append()
+        test_delete()
     except Exception as e:
         raise e
+
+def createTestList(test_data):
+    """
+    Builds an UnsortedLinkedList to be used for testing
+
+    @author Jeffrey Dowdle
+    @complexity O(N) where N is the size of test_data.
+    """
+    test_data.reverse()
+    test_list = UnsortedLinkedList()
+    for line in test_data:
+        test_list.add(line)
+    return test_list
+
+
+def test_printall():
+    """
+    Tests printall()
+
+    @author Jeffrey Dowdle
+    @complexity O(1) as it runs with static data.
+    """
+    test_data = ["This","is","test","data"]
+    test_list = createTestList(test_data)
+    test_iter = iter(test_list)
+
+    print()
+    print("TESTING printall")
+    print()
+    print("Expected:")
+    print("This")
+    print("is")
+    print("test")
+    print("data")
+    print()
+    print("Got:")
+    printall(test_iter)
+
+def test_print_n():
+    """
+    Tests printall()
+
+    @author Jeffrey Dowdle
+    @complexity O(1) as it runs with static data.
+    """
+    test_data = ["This","is","test","data"]
+    test_list = createTestList(test_data)
+    test_iter = iter(test_list)
+
+    print()
+    print("TESTING print_n when n is 4")
+    print()
+    print("Expected:")
+    print("data")
+    print()
+    print("Got:")
+    print_n(test_iter, 4)
+
+def test_insert():
+    """
+    Tests printall()
+
+    @author Jeffrey Dowdle
+    @complexity O(1) as it runs with static data.
+    """
+    test_data = ["This","is","test","data"]
+    test_list = createTestList(test_data)
+    test_iter = iter(test_list)
+
+    insert(test_iter, ["!!Insert!!","!!------!!"], 2)
+
+    print()
+    print("TESTING insert")
+    print()
+    print("Expected:")
+    print("This")
+    print("is")
+    print("!!Insert!!")
+    print("!!------!!")
+    print("test")
+    print("data")
+    print()
+    print("Got:")
+    printall(test_iter)
+
+def test_append():
+    """
+    Tests printall()
+
+    @author Jeffrey Dowdle
+    @complexity O(1) as it runs with static data.
+    """
+    test_data = ["This","is","test","data"]
+    test_list = createTestList(test_data)
+    test_iter = iter(test_list)
+
+    append(test_iter, ["!!Append!!","!!------!!"])
+
+    print()
+    print("TESTING append")
+    print()
+    print("Expected:")
+    print("This")
+    print("is")
+    print("test")
+    print("data")
+    print("!!Append!!")
+    print("!!------!!")
+    print()
+    print("Got:")
+    printall(test_iter)
+
+def test_delete():
+    """
+    Tests printall()
+
+    @author Jeffrey Dowdle
+    @complexity O(1) as it runs with static data.
+    """
+    test_data = ["This","is","test","data"]
+    test_list = createTestList(test_data)
+    test_iter = iter(test_list)
+
+    delete_n(test_iter, 2)
+
+    print()
+    print("TESTING delete")
+    print()
+    print("Expected:")
+    print("This")
+    print("test")
+    print("data")
+    print()
+    print("Got:")
+    printall(test_iter)
+
+
 
 def test_read_from_file():
     """
