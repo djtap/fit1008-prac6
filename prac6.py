@@ -33,10 +33,10 @@ def main():
     @post       see postconditions for individual methods in this class.
     @complexity have a look at the menu_q1 in the reverse_polish_notation.py
                 that you used last week and add the complexity for this one.
-
-    Please note that the complexities may change as you add
-    functionality to this class -- don't forget to update this comment
-    as you go.
+                Best: O(1) when quitting or testing.
+                Worst: O(N) where n is the size of the buffer/file to be read
+                        in. When inserting O(n + m) where m is the size of the
+                        data to be inserted.
 
     """
 
@@ -49,7 +49,7 @@ def main():
     while not quit:
         # Read a command
         try:
-            print("Possible commands: 'printall' 'pwd' 'test' 'quit' 'write $filename' 'read $filename' 'delete $line' 'append' 'insert $line' 'print $line'")
+            print("Possible commands: 'printall' 'pwd' 'test' 'quit' 'write $filename' 'read $filename' 'delete $line' 'append' 'insert $line' 'print $line' 'filter <word>'")
             input_line = input("Enter your command: ")
         except IOError as e:
             print("Error reading from console or EOF character")
@@ -93,6 +93,9 @@ def main():
                 print("Line number needs to be an integer.")
             except Exception as e:
                 print("Exception:", e)
+        elif command[0] == 'filter':
+            string = str(command[1])
+            filter_word(list_it, string)
         elif command[0] == "test":
             run_tests()
         elif command[0] == "quit":
@@ -243,6 +246,7 @@ def delete_n(list_it, n):
     @param      n: the nth line to be deleted
     @pre        n must be an integer greater than 0
     @post       List length is reduced by 1 if delete is successful
+    @raises     Exception: When line number is invalid.
     @complexity Best: O(1), if first line is the one we want to delete.
                 Worst: O(n), if the line we want to delete is at the
                 around the end of the list.
@@ -289,8 +293,7 @@ def append(list_it, append_data):
     @post       list_it contains append_data at the end
     @complexity Best and worst: O(n + m), where n is the number of lines
                 in append_data, m is the number of elements already in
-                list_it
-                // Check.
+                list_it.
     """
     # Reset iterators
     list_it.reset()
@@ -345,6 +348,16 @@ def get_length_of_list(list_it):
 
     return length
 
+def filter_word(list_it, word):
+    list_it.reset()
+
+    while list_it.has_next():
+        print(word)
+        line = list_it.peek()
+        print(line)
+        if word in line:
+            list_it.delete()
+        list_it.next()
 
 # Let's write tests too
 def run_tests():
