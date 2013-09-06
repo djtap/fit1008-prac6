@@ -25,8 +25,10 @@ def main():
     @modified   Jerry Lu
     @modified   Jeffrey Dowdle
     @since      2 September 2013
-
     @input      the commands to execute.
+    @raises     Exception: when functions called cannot perform action
+    @raises     ValueError: if line number is not an integer
+    @raises     Exception: if line number is out of range
     @pre        none
     @post       see postconditions for individual methods in this class.
     @complexity have a look at the menu_q1 in the reverse_polish_notation.py
